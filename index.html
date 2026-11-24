@@ -161,26 +161,7 @@
         <a href="#anggota">Anggota</a>
         <a href="#informasi">Informasi</a>
     </nav>
-<audio id="musik" autoplay loop>
-        <source src="i_mp3.mp3" type ="audio/mpeg">
-        Browser Anda Tidak Mendukung Audio.
-        </audio>
-    <button onclick="toggleMusik()" id="tombolMusik">
-    🔇 
-</button>
 
-<script>
-function toggleMusik() {
-    const musik = document.getElementById("musik");
-    const tombol = document.getElementById("tombolMusik");
-
-    if (musik.paused) {
-        musik.play();
-        tombol.innerHTML = "🔇";
-    } else {
-        musik.pause();
-        tombol.innerHTML = "🔊 ";
-    }
     <!-- BERANDA -->
     <section id="beranda">
         <h2>halo boss</h2>
@@ -223,7 +204,7 @@ function toggleMusik() {
 
             <div class="card">
                 <div class="foto">
-    <img src="images (31).jpeg" alt="Foto ASEP">
+    <img src="images (1).jpeg" alt="Foto ASEP">
                     </div>
                 <h3>ASEP</h3>
                 <p><b>NIS:</b> 999</p>
@@ -234,7 +215,7 @@ function toggleMusik() {
 
             <div class="card">
                 <div class="foto">
-                    <img src="images (29).jpeg" alt="Foto SUEP">
+                    <img src="images (2).jpeg" alt="Foto SUEP">
                     </div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
@@ -245,7 +226,7 @@ function toggleMusik() {
 
             <div class="card">
                 <div class="foto">
-                    <img src="images (32).jpeg" alt="Foto ISMAIL">
+                    <img src="images (3).jpeg" alt="Foto ISMAIL">
                     </div>
                 <h3>ISMAIL</h3>
                 <p><b>NIS:</b> 003</p>
@@ -256,7 +237,7 @@ function toggleMusik() {
 
             <div class="card">
                 <div class="foto">
-                    <img src="images (30).jpeg" alt="Foto MALIK">
+                    <img src="images (4).jpeg" alt="Foto MALIK">
                     </div>
                 <h3>MALIK</h3>
                 <p><b>NIS:</b> 004</p>
@@ -278,7 +259,7 @@ function toggleMusik() {
 
             <p>👨‍🏫 <b>Wali Kelas:</b>Diah bunga ditasari</p>
 
-            <p>👥 <b>Jumlah Peserta Didik:</b> 30 orang</p>
+            <p>👥 <b>Jumlah Peserta Didik:</b> 28 orang</p>
 
             <p>🏫 <b>Ruang Kelas:</b> TKJ 1</p>
 
@@ -293,8 +274,32 @@ function toggleMusik() {
     <!-- FOOTER -->
     <footer>
         <p>©️ 2026 Kelas XII TKJ 1</p>
-        <p>Website Biodata Kelas</p>
+        <p>Website Kelas</p>
     </footer>
 
+<audio id="musik" loop>
+    <source src="i_mp3.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
+
+<button onclick="toggleMusik()" id="tombolMusik">
+    🔇
+</button>
+
+<script>
+function toggleMusik() {
+    const musik = document.getElementById("musik");
+    const tombol = document.getElementById("tombolMusik");
+
+    if (musik.paused) {
+        musik.play();
+        tombol.innerHTML = "🔊";
+    } else {
+        musik.pause();
+        tombol.innerHTML = "🔇";
+    }
+}
+</script>
+    
 </body>
-</html>
+    </html>
