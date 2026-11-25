@@ -277,13 +277,12 @@
         <p>Website Kelas</p>
     </footer>
 
-<audio id="musik" loop>
-    <source src="i_mp3.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung audio.
-</audio>
-
-<button onclick="toggleMusik()" id="tombolMusik">
-    🔇
+<audio id="musik" autoplay loop>
+        <source src="i_mp3.mp3" type ="audio/mpeg">
+        Browser Anda Tidak Mendukung Audio.
+        </audio>
+    <button onclick="toggleMusik()" id="tombolMusik">
+    🔇 
 </button>
 
 <script>
@@ -293,13 +292,11 @@ function toggleMusik() {
 
     if (musik.paused) {
         musik.play();
-        tombol.innerHTML = "🔊";
+        tombol.innerHTML = "🔇";
     } else {
         musik.pause();
-        tombol.innerHTML = "🔇";
+        tombol.innerHTML = "🔊 ";
     }
-}
-</script>
-    
+                                          </script> 
 </body>
     </html>
