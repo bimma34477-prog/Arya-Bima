@@ -277,26 +277,40 @@
         <p>Website Kelas</p>
     </footer>
 
-<audio id="musik" autoplay loop>
-        <source src="i_mp3.mp3" type ="audio/mpeg">
-        Browser Anda Tidak Mendukung Audio.
-        </audio>
-    <button onclick="toggleMusik()" id="tombolMusik">
-    🔇 
+
+<audio id="musik" loop>
+    <source src="i_mp3.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
+
+<button onclick="toggleMusik()" id="tombolMusik" aria-label="Putar musik">
+    <span id="ikonMusik">▶</span>
 </button>
 
 <script>
-function toggleMusik() {
-    const musik = document.getElementById("musik");
-    const tombol = document.getElementById("tombolMusik");
+const musik = document.getElementById("musik");
+const ikon = document.getElementById("ikonMusik");
+const tombol = document.getElementById("tombolMusik");
 
+function toggleMusik() {
     if (musik.paused) {
-        musik.play();
-        tombol.innerHTML = "🔇";
+        musik.play().then(() => {
+            ikon.innerHTML = "♫";
+            tombol.setAttribute("aria-label", "Jeda musik");
+        }).catch(error => {
+            console.log("Musik gagal diputar:", error);
+        });
     } else {
         musik.pause();
-        tombol.innerHTML = "🔊 ";
+        ikon.innerHTML = "▶";
+        tombol.setAttribute("aria-label", "Putar musik");
     }
-                                          </script> 
+}
+
+musik.addEventListener("ended", () => {
+    ikon.innerHTML = "▶";
+});
+</script>
+
 </body>
     </html>
