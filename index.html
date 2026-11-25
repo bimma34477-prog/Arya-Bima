@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Kelas  XII TKJ 1</title>
+    <title>Biodata Kelas XII TKJ 1</title>
 
     <style>
         * {
@@ -12,55 +12,108 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        #tombolMusik {
-    position: fixed !important;
-    right: 20px !important;
-    left: auto !important;
-    bottom: 25px !important;
-
-    width: 60px;
-    height: 60px;
-
-    border: none;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0066ff, #00bfff);
-    color: white;
-    font-size: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 99999;
-        }
 
         body {
-            background: #f4f6f8;
+            /* Background halaman dengan animasi bergerak halus */
+            background: linear-gradient(-45deg, #f4f6f8, #e0f2fe, #dbeafe, #f0f9ff);
+            background-size: 400% 400%;
+            animation: gerakBackground 12s ease infinite;
             color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Keyframes untuk menggerakkan gradasi background */
+        @keyframes gerakBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #tombolMusik {
+            position: fixed !important;
+            right: 20px !important;
+            left: auto !important;
+            bottom: 25px !important;
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066ff, #00bfff);
+            color: white;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 99999;
         }
 
         header {
-            background: linear-gradient(135deg, #0066ff, #00bfff);
+            /* Background header bergerak */
+            background: linear-gradient(-45deg, #0044cc, #0066ff, #00bfff, #0088ff);
+            background-size: 400% 400%;
+            animation: gerakBackground 8s ease infinite;
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
         }
 
         header h1 {
             font-size: 38px;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
 
         header p {
             font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Efek gelembung melayang di header */
+        .gelembung {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: melayang 10s infinite ease-in;
+            z-index: 1;
+        }
+
+        .gelembung:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 7s; }
+        .gelembung:nth-child(2) { width: 20px; height: 20px; left: 25%; animation-duration: 5s; animation-delay: 1s; }
+        .gelembung:nth-child(3) { width: 50px; height: 50px; left: 45%; animation-duration: 9s; animation-delay: 2s; }
+        .gelembung:nth-child(4) { width: 30px; height: 30px; left: 70%; animation-duration: 6s; animation-delay: 0.5s; }
+        .gelembung:nth-child(5) { width: 45px; height: 45px; left: 85%; animation-duration: 8s; animation-delay: 1.5s; }
+
+        @keyframes melayang {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-250px) scale(1.3);
+                opacity: 0;
+            }
         }
 
         nav {
             background: #222;
             padding: 15px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav a {
@@ -85,7 +138,7 @@
         }
 
         .profil {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 15px;
             text-align: center;
@@ -107,37 +160,41 @@
             text-align: center;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .foto {
-    width: 100%;
-    aspect-ratio:4/3;
-    text-align: center;
-    cursor:pointer;
-    object-fit: cover;
-    display: block;
-    border-radius:0;
-    transform:scale(1.03);
-}
+            width: 100%;
+            aspect-ratio: 4/3;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
 
-.foto img {
-    width:100%;
+        .foto img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
-
         }
 
         .card h3 {
             color: #0066ff;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .card p {
-            margin: 7px 0;
+            margin: 5px 0;
+            font-size: 14px;
+            text-align: left;
         }
 
         .info {
-            background: #e8f3ff;
+            background: rgba(232, 243, 255, 0.7);
         }
 
         .info-box {
@@ -147,6 +204,7 @@
             padding: 25px;
             border-radius: 15px;
             line-height: 2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         footer {
@@ -163,7 +221,7 @@
 
             nav a {
                 display: inline-block;
-                margin: 5px;
+                margin: 5px 10px;
             }
         }
     </style>
@@ -171,8 +229,14 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER DENGAN ANIMASI GELEMBUNG & GRADASI -->
     <header>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+
         <h1>📚 XII TKJ 1</h1>
         <p>Website Biodata Kelas</p>
     </header>
@@ -187,81 +251,66 @@
 
     <!-- BERANDA -->
     <section id="beranda">
-        <h2>halo boss</h2>
-
+        <h2>Halo Boss!</h2>
         <div class="profil">
-            <p>
-                Selamat datang di web Hihu
-                <b>XII TKJ 1</b>.
-            </p>
-
-            <p>
-                Website ini berisi informasi mengenai kelas,
-                wali kelas, dan biodata peserta didik.
-            </p>
+            <p>Selamat datang di web resmi <b>XII TKJ 1</b>.</p>
+            <p>Website ini berisi informasi mengenai kelas, wali kelas, dan biodata peserta didik.</p>
         </div>
     </section>
 
     <!-- PROFIL -->
     <section id="profil">
-
         <h2>Profil Kelas</h2>
-
         <div class="profil">
-
             <p><b>Nama Sekolah:</b> SMK SETIA DARMA</p>
             <p><b>Kelas:</b> XII TKJ 1</p>
-            <p><b>Wali Kelas:</b> Diah bunga ditasari</p>
+            <p><b>Wali Kelas:</b> Diah Bunga Ditasari</p>
             <p><b>Tahun Pelajaran:</b> 2026/2027</p>
-
         </div>
-
     </section>
 
     <!-- ANGGOTA -->
     <section id="anggota">
-
         <h2>Biodata Anggota Kelas</h2>
-
         <div class="anggota">
 
             <div class="card">
                 <div class="foto">
-    <img src="images (1).jpeg" alt="Foto ASEP">
-                    </div>
+                    <img src="images (1).jpeg" alt="Foto ASEP">
+                </div>
                 <h3>ASEP</h3>
                 <p><b>NIS:</b> 999</p>
-                <p><b>Jenis Kelamin:</b> laki-laki</p>
-                <p><b>Hobi:</b> makan</p>
-                <p><b>Cita-cita:</b> joki Ml</p>
+                <p><b>Jenis Kelamin:</b> Laki-laki</p>
+                <p><b>Hobi:</b> Makan</p>
+                <p><b>Cita-cita:</b> Joki ML</p>
             </div>
 
             <div class="card">
                 <div class="foto">
                     <img src="images (2).jpeg" alt="Foto SUEP">
-                    </div>
+                </div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
-                <p><b>Jenis Kelamin:</b>Laki-Laki</p>
+                <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> PHP</p>
-                <p><b>Cita-cita:</b> Wakil presiden</p>
+                <p><b>Cita-cita:</b> Wakil Presiden</p>
             </div>
 
             <div class="card">
                 <div class="foto">
                     <img src="images (3).jpeg" alt="Foto ISMAIL">
-                    </div>
+                </div>
                 <h3>ISMAIL</h3>
                 <p><b>NIS:</b> 003</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
-                <p><b>Hobi:</b> Pickme</p>
+                <p><b>Hobi:</b> Pick me</p>
                 <p><b>Cita-cita:</b> Presiden</p>
             </div>
 
             <div class="card">
                 <div class="foto">
                     <img src="images (4).jpeg" alt="Foto MALIK">
-                    </div>
+                </div>
                 <h3>MALIK</h3>
                 <p><b>NIS:</b> 004</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
@@ -270,28 +319,18 @@
             </div>
 
         </div>
-
     </section>
 
     <!-- INFORMASI -->
     <section class="info" id="informasi">
-
         <h2>Informasi Kelas</h2>
-
         <div class="info-box">
-
-            <p>👨‍🏫 <b>Wali Kelas:</b>Diah bunga ditasari</p>
-
+            <p>👨‍🏫 <b>Wali Kelas:</b> Diah Bunga Ditasari</p>
             <p>👥 <b>Jumlah Peserta Didik:</b> 28 orang</p>
-
             <p>🏫 <b>Ruang Kelas:</b> TKJ 1</p>
-
             <p>📅 <b>Tahun Pelajaran:</b> 2026/2027</p>
-
             <p>🏆 <b>Motto:</b> Kompak, Kreatif, dan Berprestasi!</p>
-
         </div>
-
     </section>
 
     <!-- FOOTER -->
@@ -300,40 +339,40 @@
         <p>Website Kelas</p>
     </footer>
 
+    <!-- AUDIO & TOMBOL PEMUTAR -->
+    <audio id="musik" loop>
+        <source src="i_mp3.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+    </audio>
 
-<audio id="musik" loop>
-    <source src="i_mp3.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung audio.
-</audio>
+    <button onclick="toggleMusik()" id="tombolMusik" aria-label="Putar musik">
+        <span id="ikonMusik">▶</span>
+    </button>
 
-<button onclick="toggleMusik()" id="tombolMusik" aria-label="Putar musik">
-    <span id="ikonMusik">▶</span>
-</button>
+    <script>
+        const musik = document.getElementById("musik");
+        const ikon = document.getElementById("ikonMusik");
+        const tombol = document.getElementById("tombolMusik");
 
-<script>
-const musik = document.getElementById("musik");
-const ikon = document.getElementById("ikonMusik");
-const tombol = document.getElementById("tombolMusik");
+        function toggleMusik() {
+            if (musik.paused) {
+                musik.play().then(() => {
+                    ikon.innerHTML = "♫";
+                    tombol.setAttribute("aria-label", "Jeda musik");
+                }).catch(error => {
+                    console.log("Musik gagal diputar:", error);
+                });
+            } else {
+                musik.pause();
+                ikon.innerHTML = "▶";
+                tombol.setAttribute("aria-label", "Putar musik");
+            }
+        }
 
-function toggleMusik() {
-    if (musik.paused) {
-        musik.play().then(() => {
-            ikon.innerHTML = "♫";
-            tombol.setAttribute("aria-label", "Jeda musik");
-        }).catch(error => {
-            console.log("Musik gagal diputar:", error);
+        musik.addEventListener("ended", () => {
+            ikon.innerHTML = "▶";
         });
-    } else {
-        musik.pause();
-        ikon.innerHTML = "▶";
-        tombol.setAttribute("aria-label", "Putar musik");
-    }
-}
-
-musik.addEventListener("ended", () => {
-    ikon.innerHTML = "▶";
-});
-</script>
-
+    </script>
 </body>
     </html>
+    
