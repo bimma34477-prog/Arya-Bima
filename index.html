@@ -13,61 +13,219 @@
             font-family: Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #f4f6f8;
-            color: #333;
+            background: linear-gradient(135deg, #090d16, #111827, #0f172a);
+            color: #f3f4f6;
+            position: relative;
+            overflow-x: hidden;
+            padding-bottom: 110px;
+        }
+
+        /* PANEL PEMUTAR YOUTUBE DI POJOK KANAN BAWAH */
+        #panelYoutube {
+            position: fixed !important;
+            right: 15px !important;
+            bottom: 20px !important;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            padding: 10px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+        }
+
+        #judulYoutube {
+            font-size: 11px;
+            color: #93c5fd;
+            font-weight: bold;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+
+        .grup-tombol {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tombol-pemutar {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ef4444, #b91c1c); /* Warna merah khas YouTube */
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .tombol-pemutar:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #f87171, #dc2626);
+        }
+
+        /* Menyembunyikan iframe YouTube agar berjalan di latar belakang */
+        #youtubePlayerContainer {
+            display: none;
         }
 
         header {
-            background: linear-gradient(135deg, #0066ff, #00bfff);
+            background: linear-gradient(-45deg, #002266, #0044cc, #0066ff, #003399);
+            background-size: 400% 400%;
+            animation: gerakBackground 8s ease infinite;
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gerakBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
             font-size: 38px;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
 
         header p {
             font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gelembung {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: melayang 10s infinite ease-in;
+            z-index: 1;
+        }
+
+        .gelembung:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 7s; }
+        .gelembung:nth-child(2) { width: 20px; height: 20px; left: 25%; animation-duration: 5s; animation-delay: 1s; }
+        .gelembung:nth-child(3) { width: 50px; height: 50px; left: 45%; animation-duration: 9s; animation-delay: 2s; }
+        .gelembung:nth-child(4) { width: 30px; height: 30px; left: 70%; animation-duration: 6s; animation-delay: 0.5s; }
+        .gelembung:nth-child(5) { width: 45px; height: 45px; left: 85%; animation-duration: 8s; animation-delay: 1.5s; }
+
+        @keyframes melayang {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-250px) scale(1.3); opacity: 0; }
         }
 
         nav {
-            background: #222;
+            background: #111827;
             padding: 15px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav a {
-            color: white;
+            color: #d1d5db;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 12px;
             font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s, color 0.2s;
         }
 
         nav a:hover {
-            color: #00bfff;
+            color: #60a5fa;
+            transform: translateY(-2px);
         }
 
         section {
-            padding: 45px 8%;
+            padding: 55px 8%;
+            position: relative;
+            z-index: 2;
+            scroll-margin-top: 50px;
+        }
+
+        @keyframes animasiSorot {
+            0% { transform: translateY(15px) scale(0.98); opacity: 0.6; }
+            50% { transform: translateY(-5px) scale(1.01); }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .gerak-aktif {
+            animation: animasiSorot 0.6s ease-out;
         }
 
         h2 {
             text-align: center;
-            color: #0066ff;
+            color: #60a5fa;
             margin-bottom: 25px;
         }
 
-        .profil {
+        .bulan {
+            position: absolute;
+            top: 60px;
+            right: 70px;
+            width: 70px;
+            height: 70px;
+            background: #fef08a;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #fde047, 0 0 80px rgba(253, 224, 71, 0.3);
+            z-index: 1;
+        }
+
+        .bintang {
+            position: absolute;
             background: white;
+            border-radius: 50%;
+            animation: kelip 2s infinite ease-in-out alternate;
+            z-index: 1;
+        }
+
+        @keyframes kelip {
+            0% { opacity: 0.2; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .b.b1 { width: 3px; height: 3px; top: 10%; left: 10%; animation-delay: 0.2s; }
+        .b.b2 { width: 2px; height: 2px; top: 25%; left: 85%; animation-delay: 0.7s; }
+        .b.b3 { width: 4px; height: 4px; top: 45%; left: 15%; animation-delay: 1.1s; }
+        .b.b4 { width: 3px; height: 3px; top: 60%; left: 80%; animation-delay: 0.4s; }
+        .b.b5 { width: 2px; height: 2px; top: 85%; left: 30%; animation-delay: 1.5s; }
+        .b.b6 { width: 3px; height: 3px; top: 90%; left: 75%; animation-delay: 0.9s; }
+
+        .profil {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
             line-height: 1.8;
+            color: #f3f4f6;
         }
 
         .anggota {
@@ -78,23 +236,29 @@
         }
 
         .card {
-            background: white;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             width: 230px;
             padding: 20px;
             text-align: center;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+            color: #f3f4f6;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .foto {
             width: 100%;
             aspect-ratio: 4/3;
             text-align: center;
-            cursor: pointer;
-            object-fit: cover;
-            display: block;
-            border-radius: 0;
-            transform: scale(1.03);
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
 
         .foto img {
@@ -104,190 +268,123 @@
         }
 
         .card h3 {
-            color: #0066ff;
-            margin: 15px 0;
+            color: #60a5fa;
+            margin: 10px 0;
         }
 
         .card p {
-            margin: 7px 0;
-        }
-
-        .info {
-            background: #e8f3ff;
+            margin: 5px 0;
+            font-size: 14px;
+            text-align: left;
+            color: #d1d5db;
         }
 
         .info-box {
             max-width: 600px;
             margin: auto;
-            background: white;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f3f4f6;
             padding: 25px;
             border-radius: 15px;
             line-height: 2;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
 
         footer {
-            background: #222;
-            color: white;
+            background: #05070b;
+            color: #9ca3af;
             text-align: center;
             padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
         }
 
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 28px;
-            }
-
-            nav a {
-                display: inline-block;
-                margin: 5px;
-            }
+            header h1 { font-size: 28px; }
+            nav a { margin: 5px 8px; font-size: 14px; }
+            .bulan { width: 50px; height: 50px; top: 30px; right: 20px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <div class="bulan"></div>
+    <div class="bintang b b1"></div>
+    <div class="bintang b b2"></div>
+    <div class="bintang b b3"></div>
+    <div class="bintang b b4"></div>
+    <div class="bintang b b5"></div>
+    <div class="bintang b b6"></div>
+
     <header>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+        <div class="gelembung"></div>
+
         <h1>📚 XII TKJ 1</h1>
         <p>Website Biodata Kelas</p>
     </header>
 
-    <!-- MENU -->
     <nav>
-        <a href="#beranda">Beranda</a>
-        <a href="#profil">Profil Kelas</a>
-        <a href="#anggota">Anggota</a>
-        <a href="#informasi">Informasi</a>
+        <a href="#beranda" onclick="aktifkanAnimasi('beranda')">Beranda</a>
+        <a href="#profil" onclick="aktifkanAnimasi('profil')">Profil Kelas</a>
+        <a href="#anggota" onclick="aktifkanAnimasi('anggota')">Anggota</a>
+        <a href="#informasi" onclick="aktifkanAnimasi('informasi')">Informasi</a>
     </nav>
 
-    <!-- Pemutar musik YouTube -->
-    <div id="player"></div>
-
-    <!-- Tombol musik -->
-    <button onclick="toggleMusik()" id="tombolMusik">
-        🔇
-    </button>
-
-    <!-- YouTube API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
-    <script>
-    let player;
-    let musikAktif = false;
-
-    // Membuat pemutar YouTube
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '0',
-            width: '0',
-            videoId: 'ArH_TatV1nw',
-
-            playerVars: {
-                autoplay: 1,
-                loop: 1,
-                playlist: 'ArH_TatV1nw'
-            },
-
-            events: {
-                onReady: function(event) {
-                    event.target.setVolume(50);
-                }
-            }
-        });
-    }
-
-    // Fungsi tombol musik ON/OFF
-    function toggleMusik() {
-        const tombol = document.getElementById("tombolMusik");
-
-        if (!player) {
-            return;
-        }
-
-        if (!musikAktif) {
-            player.playVideo();
-            tombol.innerHTML = "🔊";
-            musikAktif = true;
-        } else {
-            player.pauseVideo();
-            tombol.innerHTML = "🔇";
-            musikAktif = false;
-        }
-    }
-    </script>
-
-    <!-- BERANDA -->
     <section id="beranda">
-        <h2>halo boss</h2>
-
+        <h2>Halo Boss!</h2>
         <div class="profil">
-            <p>
-                Selamat datang di web Hihu
-                <b>XII TKJ 1</b>.
-            </p>
-
-            <p>
-                Website ini berisi informasi mengenai kelas,
-                wali kelas, dan biodata peserta didik.
-            </p>
+            <p>Selamat datang di web resmi <b>XII TKJ 1</b>.</p>
+            <p>Website ini berisi informasi mengenai kelas, wali kelas, dan biodata peserta didik.</p>
         </div>
     </section>
 
-    <!-- PROFIL -->
     <section id="profil">
         <h2>Profil Kelas</h2>
-
         <div class="profil">
             <p><b>Nama Sekolah:</b> SMK SETIA DARMA</p>
             <p><b>Kelas:</b> XII TKJ 1</p>
-            <p><b>Wali Kelas:</b> Diah bunga ditasari</p>
+            <p><b>Wali Kelas:</b> Diah Bunga Ditasari</p>
             <p><b>Tahun Pelajaran:</b> 2026/2027</p>
         </div>
     </section>
 
-    <!-- ANGGOTA -->
     <section id="anggota">
         <h2>Biodata Anggota Kelas</h2>
-
         <div class="anggota">
             <div class="card">
-                <div class="foto">
-                    <img src="images (1).jpeg" alt="Foto ASEP">
-                </div>
+                <div class="foto"><img src="images (1).jpeg" alt="Foto ASEP"></div>
                 <h3>ASEP</h3>
                 <p><b>NIS:</b> 999</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> Makan</p>
                 <p><b>Cita-cita:</b> Joki ML</p>
             </div>
-
             <div class="card">
-                <div class="foto">
-                    <img src="images (2).jpeg" alt="Foto SUEP">
-                </div>
+                <div class="foto"><img src="images (2).jpeg" alt="Foto SUEP"></div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
-                <p><b>Jenis Kelamin:</b> Laki-Laki</p>
+                <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> PHP</p>
-                <p><b>Cita-cita:</b> Wakil presiden</p>
+                <p><b>Cita-cita:</b> Wakil Presiden</p>
             </div>
-
             <div class="card">
-                <div class="foto">
-                    <img src="images (3).jpeg" alt="Foto ISMAIL">
-                </div>
+                <div class="foto"><img src="images (3).jpeg" alt="Foto ISMAIL"></div>
                 <h3>ISMAIL</h3>
                 <p><b>NIS:</b> 003</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
-                <p><b>Hobi:</b> Pickme</p>
+                <p><b>Hobi:</b> Pick me</p>
                 <p><b>Cita-cita:</b> Presiden</p>
             </div>
-
             <div class="card">
-                <div class="foto">
-                    <img src="images (4).jpeg" alt="Foto MALIK">
-                </div>
+                <div class="foto"><img src="images (4).jpeg" alt="Foto MALIK"></div>
                 <h3>MALIK</h3>
                 <p><b>NIS:</b> 004</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
@@ -297,12 +394,10 @@
         </div>
     </section>
 
-    <!-- INFORMASI -->
-    <section class="info" id="informasi">
+    <section id="informasi">
         <h2>Informasi Kelas</h2>
-
         <div class="info-box">
-            <p>👨‍🏫 <b>Wali Kelas:</b> Diah bunga ditasari</p>
+            <p>👨‍🏫 <b>Wali Kelas:</b> Diah Bunga Ditasari</p>
             <p>👥 <b>Jumlah Peserta Didik:</b> 28 orang</p>
             <p>🏫 <b>Ruang Kelas:</b> TKJ 1</p>
             <p>📅 <b>Tahun Pelajaran:</b> 2026/2027</p>
@@ -310,12 +405,101 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <p>©️ 2026 Kelas XII TKJ 1</p>
         <p>Website Kelas</p>
     </footer>
 
+    <!-- CONTAINER YOUTUBE API (DISEMBUNYIKAN) -->
+    <div id="youtubePlayerContainer">
+        <div id="player"></div>
+    </div>
+
+    <!-- PANEL KONTROL PEMUTAR YOUTUBE -->
+    <div id="panelYoutube">
+        <div id="judulYoutube">🎵 Memuat...</div>
+        <div class="grup-tombol">
+            <button onclick="laguSebelumnya()" class="tombol-pemutar" aria-label="Sebelumnya">←</button>
+            <button onclick="togglePlayYoutube()" id="tombolPlay" class="tombol-pemutar" style="width: 42px; height: 42px; font-size: 16px;" aria-label="Mulai/Jeda">▶</button>
+            <button onclick="laguBerikutnya()" class="tombol-pemutar" aria-label="Selanjutnya">→</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT YOUTUBE API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // DAFTAR YouTube 
+        const playlistYoutube = [
+            { nama: "teh hijau", id: "7nbC3TgijwzQAWo3" },
+            { nama: "hindia", id: "7skVbiZSRAXvz8Rc" }
+        ];
+
+        let indexAktif = 0;
+        let player;
+        let isPlaying = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: playlistYoutube[indexAktif].id,
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
+        }
+
+        function togglePlayYoutube() {
+            if (!player) return;
+            const state = player.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        }
+
+        function onPlayerStateChange(event) {
+            const ikonPlay = document.getElementById("tombolPlay");
+            if (event.data === YT.PlayerState.PLAYING) {
+                ikonPlay.innerHTML = "❚❚";
+                isPlaying = true;
+            } else {
+                ikonPlay.innerHTML = "▶";
+                isPlaying = false;
+            }
+        }
+
+        function laguSebelumnya() {
+            indexAktif = (indexAktif - 1 + playlistYoutube.length) % playlistYoutube.length;
+            player.loadVideoById(playlistYoutube[indexAktif].id);
+            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
+        }
+
+        function laguBerikutnya() {
+            indexAktif = (indexAktif + 1) % playlistYoutube.length;
+            player.loadVideoById(playlistYoutube[indexAktif].id);
+            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
+        }
+
+        function aktifkanAnimasi(idBagian) {
+            const elemen = document.getElementById(idBagian);
+            if (elemen) {
+                elemen.classList.remove("gerak-aktif");
+                void elemen.offsetWidth;
+                elemen.classList.add("gerak-aktif");
+            }
+        }
+    </script>
 </body>
-    </html>
-    
+        </html>
+        
