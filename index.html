@@ -22,50 +22,51 @@
             color: #f3f4f6;
             position: relative;
             overflow-x: hidden;
-            padding-bottom: 110px;
+            padding-bottom: 95px; /* Memberikan ruang agar konten bawah tidak tertutup panel musik */
         }
 
-        /* PANEL PEMUTAR YOUTUBE DI POJOK KANAN BAWAH */
-        #panelYoutube {
+        /* PANEL PEMUTAR MUSIK YANG DISESUAIKAN */
+        #panelMusik {
             position: fixed !important;
             right: 15px !important;
             bottom: 20px !important;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.92);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(96, 165, 250, 0.4);
-            padding: 10px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            padding: 8px 12px;
             border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            gap: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             z-index: 99999;
         }
 
-        #judulYoutube {
+        #judulLagu {
             font-size: 11px;
             color: #93c5fd;
             font-weight: bold;
-            max-width: 150px;
+            max-width: 130px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
+            letter-spacing: 0.5px;
         }
 
         .grup-tombol {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tombol-pemutar {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border: none;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             font-size: 14px;
             font-weight: bold;
@@ -79,11 +80,13 @@
 
         .tombol-pemutar:hover {
             transform: scale(1.1);
-            background: linear-gradient(135deg, #f87171, #dc2626);
+            background: linear-gradient(135deg, #60a5fa, #2563eb);
         }
 
-        #youtubePlayerContainer {
-            display: none;
+        .tombol-tengah {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
         }
 
         header {
@@ -116,6 +119,7 @@
             z-index: 2;
         }
 
+        /* Efek gelembung melayang di header */
         .gelembung {
             position: absolute;
             bottom: -50px;
@@ -160,6 +164,10 @@
             transform: translateY(-2px);
         }
 
+        nav a:active {
+            transform: scale(0.92);
+        }
+
         section {
             padding: 55px 8%;
             position: relative;
@@ -167,10 +175,19 @@
             scroll-margin-top: 50px;
         }
 
+        /* ANIMASI PERGERAKAN SAAT MENU DIKLIK */
         @keyframes animasiSorot {
-            0% { transform: translateY(15px) scale(0.98); opacity: 0.6; }
-            50% { transform: translateY(-5px) scale(1.01); }
-            100% { transform: translateY(0) scale(1); opacity: 1; }
+            0% {
+                transform: translateY(15px) scale(0.98);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-5px) scale(1.01);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
 
         .gerak-aktif {
@@ -183,6 +200,7 @@
             margin-bottom: 25px;
         }
 
+        /* EFEK BULAN DAN BINTANG DI LATAR BELAKANG UTAMA */
         .bulan {
             position: absolute;
             top: 60px;
@@ -311,6 +329,7 @@
 
 <body>
 
+    <!-- ELEMEN BINTANG & BULAN LATAR BELAKANG MALAM -->
     <div class="bulan"></div>
     <div class="bintang b b1"></div>
     <div class="bintang b b2"></div>
@@ -319,6 +338,7 @@
     <div class="bintang b b5"></div>
     <div class="bintang b b6"></div>
 
+    <!-- HEADER -->
     <header>
         <div class="gelembung"></div>
         <div class="gelembung"></div>
@@ -330,6 +350,7 @@
         <p>Website Biodata Kelas</p>
     </header>
 
+    <!-- MENU -->
     <nav>
         <a href="#beranda" onclick="aktifkanAnimasi('beranda')">Beranda</a>
         <a href="#profil" onclick="aktifkanAnimasi('profil')">Profil Kelas</a>
@@ -337,6 +358,7 @@
         <a href="#informasi" onclick="aktifkanAnimasi('informasi')">Informasi</a>
     </nav>
 
+    <!-- BERANDA -->
     <section id="beranda">
         <h2>Halo Boss!</h2>
         <div class="profil">
@@ -345,6 +367,7 @@
         </div>
     </section>
 
+    <!-- PROFIL KELAS -->
     <section id="profil">
         <h2>Profil Kelas</h2>
         <div class="profil">
@@ -355,44 +378,59 @@
         </div>
     </section>
 
+    <!-- ANGGOTA KELAS -->
     <section id="anggota">
         <h2>Biodata Anggota Kelas</h2>
         <div class="anggota">
+
             <div class="card">
-                <div class="foto"><img src="images (1).jpeg" alt="Foto ASEP"></div>
+                <div class="foto">
+                    <img src="images (1).jpeg" alt="Foto ASEP">
+                </div>
                 <h3>ASEP</h3>
                 <p><b>NIS:</b> 999</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> Makan</p>
                 <p><b>Cita-cita:</b> Joki ML</p>
             </div>
+
             <div class="card">
-                <div class="foto"><img src="images (2).jpeg" alt="Foto SUEP"></div>
+                <div class="foto">
+                    <img src="images (2).jpeg" alt="Foto SUEP">
+                </div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> PHP</p>
                 <p><b>Cita-cita:</b> Wakil Presiden</p>
             </div>
+
             <div class="card">
-                <div class="foto"><img src="images (3).jpeg" alt="Foto ISMAIL"></div>
+                <div class="foto">
+                    <img src="images (3).jpeg" alt="Foto ISMAIL">
+                </div>
                 <h3>ISMAIL</h3>
                 <p><b>NIS:</b> 003</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> Pick me</p>
                 <p><b>Cita-cita:</b> Presiden</p>
             </div>
+
             <div class="card">
-                <div class="foto"><img src="images (4).jpeg" alt="Foto MALIK"></div>
+                <div class="foto">
+                    <img src="images (4).jpeg" alt="Foto MALIK">
+                </div>
                 <h3>MALIK</h3>
                 <p><b>NIS:</b> 004</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> Musik</p>
                 <p><b>Cita-cita:</b> Pilot</p>
             </div>
+
         </div>
     </section>
 
+    <!-- INFORMASI KELAS -->
     <section id="informasi">
         <h2>Informasi Kelas</h2>
         <div class="info-box">
@@ -404,91 +442,83 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>©️ 2026 Kelas XII TKJ 1</p>
         <p>Website Kelas</p>
     </footer>
 
-    <!-- CONTAINER YOUTUBE API (DISEMBUNYIKAN) -->
-    <div id="youtubePlayerContainer">
-        <div id="player"></div>
-    </div>
+    <!-- ELEMEN AUDIO & PANEL PEMUTAR MUSIK -->
+    <audio id="audioElement"></audio>
 
-    <!-- PANEL KONTROL PEMUTAR YOUTUBE -->
-    <div id="panelYoutube">
-        <div id="judulYoutube">🎵 Memuat...</div>
+    <div id="panelMusik">
+        <div id="judulLagu">🎵 Bertahan</div>
         <div class="grup-tombol">
-            <button onclick="laguSebelumnya()" class="tombol-pemutar" aria-label="Sebelumnya">←</button>
-            <button onclick="togglePlayYoutube()" id="tombolPlay" class="tombol-pemutar" style="width: 42px; height: 42px; font-size: 16px;" aria-label="Mulai/Jeda">▶</button>
-            <button onclick="laguBerikutnya()" class="tombol-pemutar" aria-label="Selanjutnya">→</button>
+            <button onclick="musikSebelumnya()" class="tombol-pemutar" aria-label="Musik sebelumnya">←</button>
+            <button onclick="toggleMusik()" id="tombolMusik" class="tombol-pemutar tombol-tengah" aria-label="Mulai/Jeda musik">
+                <span id="ikonMusik">▶</span>
+            </button>
+            <button onclick="musikSelanjutnya()" class="tombol-pemutar" aria-label="Musik selanjutnya">→</button>
         </div>
     </div>
 
-    <!-- SCRIPT YOUTUBE API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // DAFTAR ID YOUTUBE YANG SUDAH BERSIH DARI ?si
-        const playlistYoutube = [
-            { nama: "Teh Hijau", id: "RO75uUZiAw0" },
-            { nama: "Everything U Are", id: "lB8ASupNtlw" }
+        // DAFTAR LAGU BESERTA NAMA TAMPILANNYA
+        const playlist = [
+            { nama: "Bertahan", file: "bertahan.mp3" },
+            { nama: "Iqro", file: "iqro.mp3" },
+            { nama: "Dunia", file: "dunia.mp3" },
+            { nama: "Terima Kasih", file: "terimakasih.mp3" }
         ];
 
-        let indexAktif = 0;
-        let player;
-        let isPlaying = false;
+        let indexLagu = 0;
+        const audioElement = document.getElementById("audioElement");
+        const ikon = document.getElementById("ikonMusik");
+        const judulLagu = document.getElementById("judulLagu");
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: playlistYoutube[indexAktif].id,
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
+        function muatLagu(index) {
+            audioElement.src = playlist[index].file;
+            judulLagu.innerText = "🎵 " + playlist[index].nama;
+        }
+
+        muatLagu(indexLagu);
+
+        function toggleMusik() {
+            if (audioElement.paused) {
+                audioElement.play().then(() => {
+                    ikon.innerHTML = "⏸️";
+                }).catch(error => {
+                    console.log("Gagal memutar audio:", error);
+                });
+            } else {
+                audioElement.pause();
+                ikon.innerHTML = "▶️";
+            }
+        }
+
+        function musikSebelumnya() {
+            indexLagu = (indexLagu - 1 + playlist.length) % playlist.length;
+            muatLagu(indexLagu);
+            audioElement.play().then(() => {
+                ikon.innerHTML = "⏸️";
+            }).catch(error => {
+                console.log("Gagal memutar lagu:", error);
             });
         }
 
-        function onPlayerReady(event) {
-            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
+        function musikSelanjutnya() {
+            indexLagu = (indexLagu + 1) % playlist.length;
+            muatLagu(indexLagu);
+            audioElement.play().then(() => {
+                ikon.innerHTML = "⏸️";
+            }).catch(error => {
+                console.log("Gagal memutar lagu:", error);
+            });
         }
 
-        function togglePlayYoutube() {
-            if (!player) return;
-            const state = player.getPlayerState();
-            if (state === YT.PlayerState.PLAYING) {
-                player.pauseVideo();
-            } else {
-                player.playVideo();
-            }
-        }
-
-        function onPlayerStateChange(event) {
-            const ikonPlay = document.getElementById("tombolPlay");
-            if (event.data === YT.PlayerState.PLAYING) {
-                ikonPlay.innerHTML = "❚❚";
-                isPlaying = true;
-            } else {
-                ikonPlay.innerHTML = "▶";
-                isPlaying = false;
-            }
-        }
-
-        function laguSebelumnya() {
-            indexAktif = (indexAktif - 1 + playlistYoutube.length) % playlistYoutube.length;
-            player.loadVideoById(playlistYoutube[indexAktif].id);
-            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
-        }
-
-        function laguBerikutnya() {
-            indexAktif = (indexAktif + 1) % playlistYoutube.length;
-            player.loadVideoById(playlistYoutube[indexAktif].id);
-            document.getElementById("judulYoutube").innerText = "🎵 " + playlistYoutube[indexAktif].nama;
-        }
+        audioElement.addEventListener("ended", () => {
+            musikSelanjutnya();
+        });
 
         function aktifkanAnimasi(idBagian) {
             const elemen = document.getElementById(idBagian);
@@ -500,5 +530,4 @@
         }
     </script>
 </body>
-            </html>
-            
+    </html>
