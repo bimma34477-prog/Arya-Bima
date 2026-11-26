@@ -161,40 +161,59 @@
         <a href="#anggota">Anggota</a>
         <a href="#informasi">Informasi</a>
     </nav>
-<!-- Pemutar TikTok -->
-    <iframe
-        id="musikTikTok"
-        src="https://vm.tiktok.com/ZSsrYdwWc/"
-        width="325"
-        height="580"
-        allow="fullscreen"
-        title="Musik TikTok">
-    </iframe>
-
-    <br>
+<!-- Pemutar musik YouTube -->
+    <div id="player"></div>
 
     <!-- Tombol musik -->
     <button onclick="toggleMusik()" id="tombolMusik">
-        🔊
+        🔇
     </button>
 
+    <!-- YouTube API -->
+    <script src="https://youtu.be/ArH_TatV1nw?si=v5c_-CXCYG1Lj_x7"></script>
+
     <script>
+    let player;
     let musikAktif = false;
 
+    // Membuat pemutar YouTube
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '0',
+            width: '0',
+            videoId: 'r9L4AseD-aA',
+
+            playerVars: {
+                autoplay: 1,
+                loop: 1,
+                playlist: 'r9L4AseD-aA'
+            },
+
+            events: {
+                onReady: function(event) {
+                    event.target.setVolume(50);
+                }
+            }
+        });
+    }
+
+    // Fungsi tombol musik ON/OFF
     function toggleMusik() {
-        const player = document.getElementById("musikTikTok");
         const tombol = document.getElementById("tombolMusik");
 
-        const perintah = musikAktif ? "pause" : "play";
+        if (!player) {
+            return;
+        }
 
-        player.contentWindow.postMessage({
-            "x-tiktok-player": true,
-            "type": perintah
-        }, "https://www.tiktok.com");
-
-        musikAktif = !musikAktif;
-
-        tombol.innerHTML = musikAktif ? "🔊" : "🔇";
+        if (!musikAktif) {
+            player.playVideo();
+            tombol.innerHTML = "🔊";
+            musikAktif = true;
+        } else {
+            player.pauseVideo();
+            tombol.innerHTML = "🔇";
+            musikAktif = false;
+        }
     }
     </script>
     <!-- BERANDA -->
