@@ -161,56 +161,28 @@
         <a href="#anggota">Anggota</a>
         <a href="#informasi">Informasi</a>
     </nav>
-<!-- Pemutar musik YouTube -->
-    <div id="player"></div>
+<audio id="musik" loop>
+    <source src="dunia.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
 
-    <!-- Tombol musik -->
-    <button onclick="toggleMusik()" id="tombolMusik">🔇
-    </button>
+<button onclick="toggleMusik()" id="tombolMusik">
+    🔇
+</button>
 
-    <!-- YouTube API -->
-    <script src="https://youtu.be/ArH_TatV1nw?si=PdEtYSvMmDfmSBe2"></script>
+<script>
+function toggleMusik() {
+    const musik = document.getElementById("musik");
+    const tombol = document.getElementById("tombolMusik");
 
-    <script>
-    let player;
-    let musikAktif = false;
-
-    // Membuat pemutar YouTube
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '0',
-            width: '0',
-            videoId: 'r9L4AseD-aA',
-
-            playerVars: {
-                autoplay: 1,
-                loop: 1,
-                playlist: 'r9L4AseD-aA'
-            },
-
-            events: {
-                onReady: function(event) {
-                    event.target.setVolume(50);
-        }
-    // Fungsi tombol musik ON/OFF
-    function toggleMusik() {
-        const tombol = document.getElementById("tombolMusik");
-
-        if (!player) {
-            return;
-        }
-
-        if (!musikAktif) {
-            player.playVideo();
-            tombol.innerHTML = "🔊";
-            musikAktif = true;
-        } else {
-            player.pauseVideo();
-            tombol.innerHTML = "🔇";
-            musikAktif = false;
-        }
+    if (musik.paused) {
+        musik.play();
+        tombol.innerHTML = "🔊";
+    } else {
+        musik.pause();
+        tombol.innerHTML = "🔇";
     }
-    </script>
+    
     <!-- BERANDA -->
     <section id="beranda">
         <h2>halo boss</h2>
@@ -325,6 +297,7 @@
         <p>©️ 2026 Kelas XII TKJ 1</p>
         <p>Website Kelas</p>
     </footer>
+    
 }
 </script>
     
