@@ -65,7 +65,7 @@
             height: 36px;
             border: none;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ef4444, #b91c1c); /* Warna merah khas YouTube */
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
             color: white;
             font-size: 14px;
             font-weight: bold;
@@ -82,7 +82,6 @@
             background: linear-gradient(135deg, #f87171, #dc2626);
         }
 
-        /* Menyembunyikan iframe YouTube agar berjalan di latar belakang */
         #youtubePlayerContainer {
             display: none;
         }
@@ -428,10 +427,10 @@
     <!-- SCRIPT YOUTUBE API -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // DAFTAR YouTube 
+        // DAFTAR ID YOUTUBE YANG SUDAH BERSIH DARI ?si
         const playlistYoutube = [
-            { nama: "teh hijau", id: "RO75uUZiAw0?si" },
-            { nama: "hindia", id: "lB8ASupNtlw?si" }
+            { nama: "Teh Hijau", id: "RO75uUZiAw0" },
+            { nama: "Everything U Are", id: "lB8ASupNtlw" }
         ];
 
         let indexAktif = 0;
@@ -501,5 +500,5 @@
         }
     </script>
 </body>
-        </html>
-        
+            </html>
+            
