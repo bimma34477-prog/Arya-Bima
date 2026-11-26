@@ -165,8 +165,7 @@
     <div id="player"></div>
 
     <!-- Tombol musik -->
-    <button onclick="toggleMusik()" id="tombolMusik">
-        🔇
+    <button onclick="toggleMusik()" id="tombolMusik">🔇
     </button>
 
     <!-- YouTube API -->
@@ -192,11 +191,7 @@
             events: {
                 onReady: function(event) {
                     event.target.setVolume(50);
-                }
-            }
-        });
-    }
-
+        }
     // Fungsi tombol musik ON/OFF
     function toggleMusik() {
         const tombol = document.getElementById("tombolMusik");
