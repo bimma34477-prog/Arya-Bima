@@ -165,11 +165,11 @@
     <div id="player"></div>
 
     <!-- Tombol musik -->
-    <button onclick="toggleMusik()" id="tombolMusik" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; padding: 10px 15px; font-size: 20px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <button onclick="toggleMusik()" id="tombolMusik">
         🔇
     </button>
 
-    <!-- YouTube API Script -->
+    <!-- YouTube API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
@@ -181,12 +181,14 @@
         player = new YT.Player('player', {
             height: '0',
             width: '0',
-            videoId: 'ArH_TatV1nw', // Updated to match your video ID
+            videoId: 'ArH_TatV1nw',
+
             playerVars: {
-                autoplay: 0,
+                autoplay: 1,
                 loop: 1,
                 playlist: 'ArH_TatV1nw'
             },
+
             events: {
                 onReady: function(event) {
                     event.target.setVolume(50);
@@ -266,9 +268,9 @@
                 </div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
-                <p><b>Jenis Kelamin:</b> Laki-laki</p>
+                <p><b>Jenis Kelamin:</b> Laki-Laki</p>
                 <p><b>Hobi:</b> PHP</p>
-                <p><b>Cita-cita:</b> Wakil Presiden</p>
+                <p><b>Cita-cita:</b> Wakil presiden</p>
             </div>
 
             <div class="card">
