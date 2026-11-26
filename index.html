@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Kelas  XII TKJ 1</title>
+    <title>Biodata Kelas XII TKJ 1</title>
 
     <style>
         * {
@@ -87,21 +87,20 @@
         }
 
         .foto {
-    width: 100%;
-    aspect-ratio:4/3;
-    text-align: center;
-    cursor:pointer;
-    object-fit: cover;
-    display: block;
-    border-radius:0;
-    transform:scale(1.03);
-}
+            width: 100%;
+            aspect-ratio: 4/3;
+            text-align: center;
+            cursor: pointer;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            transform: scale(1.03);
+        }
 
-.foto img {
-    width:100%;
+        .foto img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
-
         }
 
         .card h3 {
@@ -161,16 +160,17 @@
         <a href="#anggota">Anggota</a>
         <a href="#informasi">Informasi</a>
     </nav>
-<!-- Pemutar musik YouTube -->
+
+    <!-- Pemutar musik YouTube -->
     <div id="player"></div>
 
     <!-- Tombol musik -->
-    <button onclick="toggleMusik()" id="tombolMusik">
+    <button onclick="toggleMusik()" id="tombolMusik" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; padding: 10px 15px; font-size: 20px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
         🔇
     </button>
 
-    <!-- YouTube API -->
-    <script src="https://youtu.be/ArH_TatV1nw?si=v5c_-CXCYG1Lj_x7"></script>
+    <!-- YouTube API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
     let player;
@@ -181,14 +181,12 @@
         player = new YT.Player('player', {
             height: '0',
             width: '0',
-            videoId: 'r9L4AseD-aA',
-
+            videoId: 'ArH_TatV1nw', // Updated to match your video ID
             playerVars: {
-                autoplay: 1,
+                autoplay: 0,
                 loop: 1,
-                playlist: 'r9L4AseD-aA'
+                playlist: 'ArH_TatV1nw'
             },
-
             events: {
                 onReady: function(event) {
                     event.target.setVolume(50);
@@ -216,6 +214,7 @@
         }
     }
     </script>
+
     <!-- BERANDA -->
     <section id="beranda">
         <h2>halo boss</h2>
@@ -235,53 +234,47 @@
 
     <!-- PROFIL -->
     <section id="profil">
-
         <h2>Profil Kelas</h2>
 
         <div class="profil">
-
             <p><b>Nama Sekolah:</b> SMK SETIA DARMA</p>
             <p><b>Kelas:</b> XII TKJ 1</p>
             <p><b>Wali Kelas:</b> Diah bunga ditasari</p>
             <p><b>Tahun Pelajaran:</b> 2026/2027</p>
-
         </div>
-
     </section>
 
     <!-- ANGGOTA -->
     <section id="anggota">
-
         <h2>Biodata Anggota Kelas</h2>
 
         <div class="anggota">
-
             <div class="card">
                 <div class="foto">
-    <img src="images (1).jpeg" alt="Foto ASEP">
-                    </div>
+                    <img src="images (1).jpeg" alt="Foto ASEP">
+                </div>
                 <h3>ASEP</h3>
                 <p><b>NIS:</b> 999</p>
-                <p><b>Jenis Kelamin:</b> laki-laki</p>
-                <p><b>Hobi:</b> makan</p>
-                <p><b>Cita-cita:</b> joki Ml</p>
+                <p><b>Jenis Kelamin:</b> Laki-laki</p>
+                <p><b>Hobi:</b> Makan</p>
+                <p><b>Cita-cita:</b> Joki ML</p>
             </div>
 
             <div class="card">
                 <div class="foto">
                     <img src="images (2).jpeg" alt="Foto SUEP">
-                    </div>
+                </div>
                 <h3>SUEP</h3>
                 <p><b>NIS:</b> 002</p>
-                <p><b>Jenis Kelamin:</b>Laki-Laki</p>
+                <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> PHP</p>
-                <p><b>Cita-cita:</b> Wakil presiden</p>
+                <p><b>Cita-cita:</b> Wakil Presiden</p>
             </div>
 
             <div class="card">
                 <div class="foto">
                     <img src="images (3).jpeg" alt="Foto ISMAIL">
-                    </div>
+                </div>
                 <h3>ISMAIL</h3>
                 <p><b>NIS:</b> 003</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
@@ -292,37 +285,27 @@
             <div class="card">
                 <div class="foto">
                     <img src="images (4).jpeg" alt="Foto MALIK">
-                    </div>
+                </div>
                 <h3>MALIK</h3>
                 <p><b>NIS:</b> 004</p>
                 <p><b>Jenis Kelamin:</b> Laki-laki</p>
                 <p><b>Hobi:</b> Musik</p>
                 <p><b>Cita-cita:</b> Pilot</p>
             </div>
-
         </div>
-
     </section>
 
     <!-- INFORMASI -->
     <section class="info" id="informasi">
-
         <h2>Informasi Kelas</h2>
 
         <div class="info-box">
-
-            <p>👨‍🏫 <b>Wali Kelas:</b>Diah bunga ditasari</p>
-
+            <p>👨‍🏫 <b>Wali Kelas:</b> Diah bunga ditasari</p>
             <p>👥 <b>Jumlah Peserta Didik:</b> 28 orang</p>
-
             <p>🏫 <b>Ruang Kelas:</b> TKJ 1</p>
-
             <p>📅 <b>Tahun Pelajaran:</b> 2026/2027</p>
-
             <p>🏆 <b>Motto:</b> Kompak, Kreatif, dan Berprestasi!</p>
-
         </div>
-
     </section>
 
     <!-- FOOTER -->
@@ -330,7 +313,7 @@
         <p>©️ 2026 Kelas XII TKJ 1</p>
         <p>Website Kelas</p>
     </footer>
-    
-}
+
 </body>
-</html>
+    </html>
+    
